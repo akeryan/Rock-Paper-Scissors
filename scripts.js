@@ -13,21 +13,21 @@ function getMyChoice() {
     return myChoice.toLowerCase();
 }
 
-const oponent = getComputerChoice();
-const me = getMyChoice();
+const computerSelection = getComputerChoice();
+const playerSelection = getMyChoice();
 
-console.log(`Oponent: ${oponent}`);
-console.log(`You: ${me}`);
+console.log(`Oponent: ${compueterSelection}`);
+console.log(`You: ${playerSelection}`);
 
 let result = "";
 
-if (me != oponent) {
+if (playerSelection != compueterSelection) {
     switch(me) {
-        case "rock": result = oponent === "paper" ? "You Lose! Paper beats Rock" : "You Win! Rock beats Scissors";
+        case "rock": result = computerSelection === "paper" ? "You Lose! Paper beats Rock" : "You Win! Rock beats Scissors";
         break;
-        case "paper": result = oponent === "scissors" ? "You Lose! Scissors beat Paper" : "You Win! Paper beats Rock";
+        case "paper": result = computerSelection === "scissors" ? "You Lose! Scissors beat Paper" : "You Win! Paper beats Rock";
         break;
-        case "scissors": result = oponent === "rock" ? "You Lose! Rock beats Scissors" : "You Win! Scissors beat Paper";
+        case "scissors": result = computerSelection === "rock" ? "You Lose! Rock beats Scissors" : "You Win! Scissors beat Paper";
         break;
     }
 
