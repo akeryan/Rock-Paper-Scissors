@@ -1,4 +1,4 @@
-const choices = ["Rock", "Paper", "Scissors"]
+const choices = ["rock", "paper", "scissors"]
 
 function getComputerChoice() {
     let rand = Math.floor(Math.random() * 3);
@@ -7,10 +7,10 @@ function getComputerChoice() {
 
 function getMyChoice() {
     let myChoice = "";
-    while(!choices.includes(myChoice)) {
+    while(!choices.includes(myChoice.toLowerCase())) {
         myChoice = prompt("Rock, Paper, or Scissors?");
     } 
-    return myChoice;
+    return myChoice.toLowerCase();
 }
 
 const oponent = getComputerChoice();
@@ -23,11 +23,11 @@ let result = "";
 
 if (me != oponent) {
     switch(me) {
-        case "Rock": result = oponent === "Paper" ? "You lost" : "You win";
+        case "rock": result = oponent === "paper" ? "You Lose! Paper beats Rock" : "You Win! Rock beats Scissors";
         break;
-        case "Paper": result = oponent === "Scissors" ? "You lost" : "You win";
+        case "paper": result = oponent === "scissors" ? "You Lose! Scissors beat Paper" : "You Win! Paper beats Rock";
         break;
-        case "Scissors": result = oponent === "Rock" ? "You lost" : "You win";
+        case "scissors": result = oponent === "rock" ? "You Lose! Rock beats Scissors" : "You Win! Scissors beat Paper";
         break;
     }
 
