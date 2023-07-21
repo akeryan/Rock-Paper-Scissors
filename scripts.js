@@ -1,7 +1,8 @@
 const choices = ["rock", "paper", "scissors"]
+const score = [0, 0] // score[0] - player, score[1] - computer
 
 function getComputerChoice() {
-    let rand = Math.floor(Math.random() * 3);
+    const rand = Math.floor(Math.random() * 3);
     return choices[rand];
 }
 
@@ -13,14 +14,8 @@ function getMyChoice() {
     return myChoice.toLowerCase();
 }
 
-const computerSelection = getComputerChoice();
-const playerSelection = getMyChoice();
-
-console.log(`Oponent: ${computerSelection}`);
-console.log(`You: ${playerSelection}`);
-
 function playRound(playerSelection, computerSelection) {
-    let result = "";
+    let result = "draw";
     
     if (playerSelection != computerSelection) {
         switch(playerSelection) {
@@ -38,7 +33,49 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
-console.log("Result: " + playRound(playerSelection, computerSelection));
+function game() {
+    const numOfRounds = 5;
+    let currentRound = 1;
+    let result = ""
+
+    let cSelection = ""
+    let pSelection = ""
+
+    while(currentRound <= numOfRounds) {
+        console.log(`Round ${currentRound}:`);
+
+        cSelection = getComputerChoice();
+        pSelection = getMyChoice();
+
+        console.log(`  Computer: ${cSelection}`);
+        console.log(`  Player: ${pSelection}`);
+
+        result = playRound(pSelection, cSelection)
+
+        if(result.includes('draw')) {
+            score[0]++
+            score[1]++
+        } else if (result.includes("You Lose")) {
+            score[1]++
+        } else score[0]++
+
+        console.log("  " + result);
+        currentRound++;
+    }  
+
+    console.log("------------------")
+    console.log("Total Score: ")
+    console.log(`  Player: ${score[0]}, Computer: ${score[1]}`)
+    if(score[0] > score[1]) {
+        console.log("Player is the Winner")
+    } else if (score[0] < score[1]) {
+        console.log("Computer is the Winner")
+    } else console.log("DRAW")
+}
+
+game();
+
+
 
 
 
